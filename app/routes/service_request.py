@@ -24,7 +24,7 @@ def create_service_request():
     status = body['status'],
     elder_id = body['elder_id'],
     client_id = body['client_id'],
-    # buddy_id = body['buddy_id'],
+    buddy_id = body['buddy_id'],
     hospital_name =  body['hospital_name'],
     doctor_name =  body['doctor_name'],
     appointment_time = datetime.strptime(body['appointment_time'],'%Y-%m-%d %H:%M:%S'))
