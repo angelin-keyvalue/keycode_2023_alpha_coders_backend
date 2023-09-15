@@ -4,3 +4,4 @@ flask-migrate
 alembic
 psycopg2
 python-dotenv
+flask-marshmallow
