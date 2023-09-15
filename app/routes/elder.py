@@ -3,12 +3,14 @@ from app.routes import bp
 from app.models.elder import Elder
 from app.models.client import Client
 from app.schema.elder import (GetElderSchema, CreateElderSchema)
+from flask_cors import cross_origin
 
 from flask import jsonify, request
 from werkzeug.security import generate_password_hash,check_password_hash
 
 
 @bp.route('/elder/<int:id>', methods=['GET'])
+@cross_origin(origin='*')
 def get_elder(id):
     elder = Elder.query.get(id)
     if not elder:
@@ -19,6 +21,7 @@ def get_elder(id):
 
 
 @bp.route('/elder', methods=['POST'])
+@cross_origin(origin='*')
 def create_elder():
     try:
         create_elder_schema = CreateElderSchema()

@@ -3,10 +3,12 @@ from app.models.service_request import ServiceRequest
 from app.schema.service_request import ServiceRequestSchema
 from flask import request,jsonify
 from datetime import datetime
+from flask_cors import cross_origin
 
 from app import db
 
 @bp.route('/service/request', methods=['POST'])
+@cross_origin(origin='*')
 def create_service_request():
     body = request.get_json()
     service_request = ServiceRequest(service_name=body['service_name'],
@@ -32,12 +34,14 @@ def create_service_request():
     return {"id":str(service_request.id),"status_code":"200"}
 
 @bp.route('/service/request', methods=['GET'])
+@cross_origin(origin='*')
 def get_service_requests():
     services_schema = ServiceRequestSchema(many=True)
     all_budies = ServiceRequest.query.all()
     return jsonify(services_schema.dump(all_budies))
 
 @bp.route('/service/<int:id>/request', methods=['PUT'])
+@cross_origin(origin='*')
 def update_request_status(id):
     body = request.get_json()
     service = db.session.execute(db.select(ServiceRequest).filter_by(id=id)).scalar_one()

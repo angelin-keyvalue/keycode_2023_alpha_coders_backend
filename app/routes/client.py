@@ -1,5 +1,6 @@
 from app import db
 from app.routes import bp
+from flask_cors import cross_origin
 from app.models.client import Client
 from app.schema.client import (GetClientSchema, CreateClientSchema, LoginClientSchema)
 
@@ -8,6 +9,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 
 @bp.route('/client/login', methods=['POST'])
+@cross_origin(origin='*')
 def login():
     login_client_schema = LoginClientSchema()
     login_data = login_client_schema.load(request.get_json())
@@ -23,6 +25,7 @@ def login():
 
 
 @bp.route('/client/<int:id>', methods=['GET'])
+@cross_origin(origin='*')
 def get_client(id):
     client = Client.query.get(id)
     if not client:
@@ -33,6 +36,7 @@ def get_client(id):
 
 
 @bp.route('/client', methods=['POST'])
+@cross_origin(origin='*')
 def create_client():
     try:
         create_client_schema = CreateClientSchema()

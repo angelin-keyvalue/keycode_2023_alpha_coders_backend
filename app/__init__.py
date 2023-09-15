@@ -6,13 +6,16 @@ from config import config_settings
 from app.models import db
 from app.models import buddy,services,client,elder,service_request
 from app.schema import ma
+from flask_cors import CORS, cross_origin
 
 
 migrate = Migrate()
 
 
+
 def create_app():
     app = Flask(__name__)
+    CORS(app, support_credentials=True)
     app.config.from_object(config_settings[os.getenv('ENV')])
 
     db.init_app(app)
