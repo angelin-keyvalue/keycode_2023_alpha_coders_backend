@@ -11,6 +11,7 @@ class Buddy(BaseTable):
     address = db.Column(db.Text)
     age = db.Column(db.Integer)
     city = db.Column(db.String(128))
+    profile_image_url = db.Column(db.String(128))
 
         
     def __repr__(self):
