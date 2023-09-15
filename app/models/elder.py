@@ -14,6 +14,7 @@ class Elder(BaseTable):
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
     contact_number = db.Column(db.String(32))
     client = db.relationship('Client', back_populates='elders')
+    documents = db.relationship('Document', back_populates='elder', lazy=True)
 
     def __repr__(self):
         return '<Elder {}>'.format(self.full_name)

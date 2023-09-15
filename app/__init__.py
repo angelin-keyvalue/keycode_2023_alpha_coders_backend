@@ -4,9 +4,9 @@ from flask_migrate import Migrate
 
 from config import config_settings
 from app.models import db
-from app.models import buddy,services,client,elder,service_request
+from app.models import buddy,services,client,elder,service_request,document
 from app.schema import ma
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 
 migrate = Migrate()
