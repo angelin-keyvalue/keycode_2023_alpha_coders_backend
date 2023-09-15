@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class Client(BaseTable):
     full_name = db.Column(db.String(64))
-    contact_number = db.Column(db.Integer)
+    contact_number = db.Column(db.String(64))
     address = db.Column(db.Text)
     email = db.Column(db.String(128), index=True, unique=True)
     password = db.Column(db.String(128))

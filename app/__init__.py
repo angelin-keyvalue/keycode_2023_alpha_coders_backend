@@ -4,8 +4,7 @@ from flask_migrate import Migrate
 
 from config import config_settings
 from app.models import db
-from app.models import buddy,services,client,elder
-from app.routes import bp as api_bp
+from app.models import buddy,services,client,elder,service_request
 from app.schema import ma
 
 
