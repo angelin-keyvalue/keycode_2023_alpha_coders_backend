@@ -9,6 +9,7 @@ class Client(BaseTable):
     address = db.Column(db.Text)
     email = db.Column(db.String(128), index=True, unique=True)
     password = db.Column(db.String(128))
+    elders = db.relationship('Elder',back_populates='client', lazy=True)
 
     
     def __repr__(self):
