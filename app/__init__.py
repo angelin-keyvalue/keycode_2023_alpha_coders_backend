@@ -17,9 +17,11 @@ def create_app():
     app.config.from_object(config_settings[os.getenv('ENV')])
 
     db.init_app(app)
-    ma.init_app(app)
     migrate.init_app(app, db)
-
+    ma.init_app(app)
+    
+    from app.routes import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
+
 
     return app

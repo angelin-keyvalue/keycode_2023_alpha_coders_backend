@@ -1,7 +1,9 @@
 flask
 flask-sqlalchemy
 flask-migrate
+flask-marshmallow
 alembic
 psycopg2
 python-dotenv
 flask-marshmallow
+marshmallow-sqlalchemy

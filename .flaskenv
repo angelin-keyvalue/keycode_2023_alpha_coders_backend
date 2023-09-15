@@ -1,2 +1,2 @@
 FLASK_APP = manage
-FLASK_DEBUG = False
+FLASK_DEBUG = True
