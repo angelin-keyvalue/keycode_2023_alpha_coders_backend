@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 
 from config import config_settings
 from app.models import db
+from app.models import buddy,services
 
 
 migrate = Migrate()
