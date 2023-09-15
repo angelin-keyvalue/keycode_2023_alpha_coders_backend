@@ -4,7 +4,9 @@ from flask_migrate import Migrate
 
 from config import config_settings
 from app.models import db
-from app.models import buddy,services
+from app.models import buddy,services,client,elder
+from app.routes import bp as api_bp
+from app.schema import ma
 
 
 migrate = Migrate()
@@ -15,6 +17,9 @@ def create_app():
     app.config.from_object(config_settings[os.getenv('ENV')])
 
     db.init_app(app)
+    ma.init_app(app)
     migrate.init_app(app, db)
+
+    app.register_blueprint(api_bp, url_prefix='/api')
 
     return app
